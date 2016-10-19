@@ -1,1 +1,3 @@
-./endpoints/connection.php
+/bower_components/
+/node_modules/
+/endpoints/connection.php
