@@ -10,7 +10,7 @@ angular.module('qls-admin')
                 if (res != 'ERROR') {
                     $scope.error = false;
                     localStorage.setItem('token', res);
-                    $state.go('dashboard');
+                    $state.go('dashboard.home');
                 }else{
                    $scope.error = true;
                 }

@@ -1,10 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid container-mother">
 	<div class="navbar navbar-default navbar-fixed-top">
 		<div class="col-md-5 logo">
 			<!--<img src="../_/images/logo.png" alt="QuickLearn Systems">-->
-			<img src="http://www.swiftelearningservices.com/wp-content/uploads/2015/01/logo_220.png" alt="Swift">
+			<h2 style="margin:0px;">G</h2>
 		</div>
 		<div class="col-md-1 menu-div"><i class="fa fa-navicon" ng-click="shrinkMenu()"></i></div>
+		<div class="col-md-2 text-center pull-right logout-div"><button class="btn btn-primary btn-sm" ng-click="logout()"><i class="fa  fa-sign-out"></i> Logout</button></div>
 	</div>
 	<div class="sidebar" ng-class="{'sidebar-icons':smallMenu}">
 		<div class="container-tabs" ng-mouseleave="tabIndicator($event)">
@@ -12,13 +13,13 @@
 				<ul>
 					<li ng-repeat="item in sidebar">
 						<div class="container-fluid tab" ng-mouseenter="tabIndicator($event)" ng-click="toggleSubmenu($event, $index)">
-							<div class="col-xs-2 text-center"><i class="{{item.icon}}"></i></div>
+							<div class="col-xs-2 text-left"><i class="{{item.icon}}"></i></div>
 							<div class="col-xs-8 tab-title" ng-hide="smallMenu">{{item.title}}</div>
-							<div class="col-xs-1 text-center tab-arrow" ng-hide="smallMenu"><i class="fa fa-angle-down" ng-class="{'arrow-up': item.subMenu}"></i></div>
+							<div class="col-xs-1 text-center tab-arrow" ng-hide="smallMenu"><i class="fa fa-angle-down" ng-class="{'arrow-up': item.subMenu}" ng-show="item.hasSubMenu"></i></div>
 						</div>
-						<ul class="tabs-sub" ng-hide="smallMenu || !item.subMenu">
-							<li ng-repeat="subMenuItem in item.subMenuItems">
-								<div class="container-fluid tab" ng-mouseenter="tabIndicator($event)">
+						<ul class="tabs-sub" ng-hide="smallMenu">
+							<li ng-repeat="subMenuItem in item.subMenuItems" ng-hide="!item.subMenu">
+								<div class="container-fluid tab" ng-mouseenter="tabIndicator($event)" ui-sref="{{subMenuItem.state}}">
 									<div class="col-xs-2 text-center"></div>
 									<div class="col-xs-10 tab-title">{{subMenuItem.title}}</div>
 								</div>
@@ -29,5 +30,10 @@
 			</div>
 		</div>
 		<div class="tabs-indicator"></div>
+	</div>
+	<div class="workspace" ng-class="{'workspace-smallMenu':smallMenu}">
+		<div class="container-fluid">
+			<ui-view></ui-view>
+		</div>
 	</div>
 </div>
