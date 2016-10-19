@@ -1,0 +1,30 @@
+<div class="container-fluid">
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="col-md-5 logo"><img src="../_/images/logo.png" alt="QuickLearn Systems"></div>
+		<div class="col-md-1 menu-div"><i class="fa fa-navicon" ng-click="shrinkMenu()"></i></div>
+	</div>
+	<div class="sidebar" ng-class="{'sidebar-icons':smallMenu}">
+		<div class="container-tabs" ng-mouseleave="tabIndicator($event)">
+			<div class="tabs">
+				<ul>
+					<li ng-repeat="item in sidebar">
+						<div class="container-fluid tab" ng-mouseenter="tabIndicator($event)" ng-click="toggleSubmenu($event, $index)">
+							<div class="col-xs-2 text-center"><i class="{{item.icon}}"></i></div>
+							<div class="col-xs-8 tab-title" ng-hide="smallMenu">{{item.title}}</div>
+							<div class="col-xs-1 text-center tab-arrow" ng-hide="smallMenu"><i class="fa fa-angle-down" ng-class="{'arrow-up': item.subMenu}"></i></div>
+						</div>
+						<ul class="tabs-sub" ng-hide="smallMenu || !item.subMenu">
+							<li ng-repeat="subMenuItem in item.subMenuItems">
+								<div class="container-fluid tab" ng-mouseenter="tabIndicator($event)">
+									<div class="col-xs-2 text-center"></div>
+									<div class="col-xs-10 tab-title">{{subMenuItem.title}}</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="tabs-indicator"></div>
+	</div>
+</div>

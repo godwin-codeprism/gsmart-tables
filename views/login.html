@@ -1,0 +1,27 @@
+<div class="container-fluid contianer-login text-center">
+	<div class="panel-login">
+		<div class="container-fluid">
+			<div class="col-sm-12 login-heading">
+				<h2 class="lead">Please Login</h2>
+			</div>
+			<form ng-submit="onLogin()">
+				<div class="text-left form-login">
+					<div class="form-group" ng-class="{'has-error':error}">
+						<label>Username</label>
+						<input type="text" class="form-control" ng-model="username" name="username" placeholder="Username" required>
+					</div>
+					<br/>
+					<div class="form-group" ng-class="{'has-error':error}">
+						<label>Password</label>
+						<input type="password" class="form-control" ng-model="password" name="password" placeholder="Password" required>
+					</div>
+					<br/ ng-hide="error">
+                    <p class="text-danger" ng-show="error">Incorrect username or password</p>
+					<div class="form-group text-center">
+						<input type="submit" class="btn btn-primary" value="Login">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
