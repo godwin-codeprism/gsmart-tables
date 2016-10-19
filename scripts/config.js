@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('qls-admin', ['ui.router'])
+angular.module('qls-admin', ['ui.router', 'ngAnimate'])
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('admin', {
@@ -19,12 +19,17 @@ angular.module('qls-admin', ['ui.router'])
                     }
                     $http.post('endpoints/check-token.php', data).success(function (res) {
                         if (res == 'authorized') {
-                            $state.go('dashboard');
+                            $state.go('dashboard.home');
                         } else {
                             $state.go('login');
                         }
                     });
                 }
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'views/login.html',
+                controller: 'loginCtrl'
             })
             .state('dashboard', {
                 url: '/dashboard',
@@ -32,12 +37,25 @@ angular.module('qls-admin', ['ui.router'])
                 resolve: {
                     isAuth: AuthChecker
                 },
-                controller:'dashboardCrtl'
+                controller: 'dashboardCrtl',
+                abstract: true
             })
-            .state('login', {
-                url: '/login',
-                templateUrl: 'views/login.html',
-                controller: 'loginCtrl'
+            .state('dashboard.home', {
+                url: '',
+                templateUrl: 'views/dashboard.home.html'
+            })
+            .state('dashboard.events', {
+                url: '/events',
+                templateUrl: 'views/events.html',
+                controller: 'eventsController'
+            })
+            .state('dashboard.testimonials', {
+                url: '/testimonials',
+                templateUrl: 'views/testimonials.html'
+            })
+            .state('dashboard.clients', {
+                url: '/clients',
+                templateUrl: 'views/clients.html'
             })
     }]);
 

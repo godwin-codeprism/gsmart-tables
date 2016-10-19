@@ -1,0 +1,44 @@
+<h1>Events</h1>
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Training</th>
+			<th>Date</th>
+			<th>Location</th>
+			<th>Link</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="event in events">
+			<td>{{event.training}}</td>
+			<td>{{event.date}}</td>
+			<td>{{event.location}}</td>
+			<td><a ng-href="{{event.link}}" class="link">Click here</a></td>
+			<td>
+				<div class="container-fulid">
+					<div class="row">
+						<div class="col-xs-1">
+							<button class="btn btn-xs btn-primary" ng-click="addRow($index)">Add</button>
+						</div>
+						<div class="col-xs-1">
+							<button class="btn btn-xs btn-danger">Delete</button>
+						</div>
+						<div class="col-xs-3">
+							<span class="input-group">
+                            <span class="input-group-addon" style="padding:4px;"> Sure? </span>
+							<span class="input-group-btn">
+                            <button class="btn btn-danger btn-xs"><i class="fa fa-check-circle"></i></button>
+                            <button class="btn btn-success btn-xs"><i class="fa fa-times-circle"></i></button>
+                                </span>
+							</span>
+						</div>
+						<div class="col-xs-1">
+							<button class="btn btn-xs btn-warning">Edit</button>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

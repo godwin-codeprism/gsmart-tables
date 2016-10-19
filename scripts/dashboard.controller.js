@@ -1,18 +1,27 @@
 angular.module('qls-admin')
-    .controller('dashboardCrtl', ['$scope', '$http', function ($scope, $http) {
+    .controller('dashboardCrtl', ['$scope', '$http', '$state', function ($scope, $http, $state) {
         $scope.smallMenu = false;
         $scope.sidebar = [{
+            title: 'Dashboard',
+            icon: 'fa fa-object-group',
+            hasSubMenu: false,
+            state: 'dashboard.home'
+        }, {
             title: 'Components',
             icon: 'fa fa-th',
+            hasSubMenu: true,
             subMenu: false,
             subMenuItems: [{
-                'title': 'Events'
+                'title': 'Events',
+                state: 'dashboard.events'
             }, {
-                'title': 'Testimonials'
+                'title': 'Testimonials',
+                state: 'dashboard.testimonials'
             }, {
-                'title': 'Clients'
+                'title': 'Clients',
+                state: 'dashboard.clients'
             }]
-        }]
+        }];
         $scope.shrinkMenu = function () {
             ($scope.smallMenu) ? $scope.smallMenu = false: $scope.smallMenu = true;
         }
@@ -33,6 +42,19 @@ angular.module('qls-admin')
         }
         $scope.toggleSubmenu = function (e, i) {
             var _this = e.currentTarget;
+            ($scope.smallMenu) ? $scope.smallMenu = false: false;
             ($scope.sidebar[i].subMenu) ? $scope.sidebar[i].subMenu = false: $scope.sidebar[i].subMenu = true;
+            $state.go($scope.sidebar[i].state);
+        }
+        $scope.logout = function () {
+            var data = {
+                token: localStorage.getItem('token')
+            }
+            $http.post('endpoints/logout.php', data).success(function (res) {
+                if (res == 'LOGGED_OUT') {
+                    localStorage.removeItem('token');
+                    $state.go('login');
+                }
+            })
         }
     }])

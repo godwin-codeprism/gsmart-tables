@@ -1,3 +1,7 @@
+body {
+    background-color: #F0F3F4;
+}
+
 i {
     font-size: x-large;
 }
@@ -41,6 +45,12 @@ input[type='submit'] {
 
 /*---------------------DASHBOARD---------------------*/
 
+.container-mother {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 .navbar-fixed-top {
     box-shadow: 2px 0 3px rgba(0, 0, 0, .5);
     color: white;
@@ -74,6 +84,13 @@ input[type='submit'] {
 
 .menu-div i:hover {
     color: #36cde8;
+}
+
+.logout-div {
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .sidebar {
@@ -138,9 +155,40 @@ input[type='submit'] {
     display: flex;
     align-items: center;
 }
-.fa-angle-down{
+
+.fa-angle-down {
     transition: all .51s ease;
 }
-.arrow-up{
+
+.arrow-up {
     transform: rotate(180deg);
+}
+
+.tabs-sub li.ng-hide-remove {
+    animation: flipInX .51s ease;
+}
+
+.tabs-sub li.ng-hide-add {
+    animation: flipOutX .51s ease;
+}
+
+.tab-title.ng-hide-remove,
+.tab-arrow.ng-hide-remove,
+.tabs-sub.ng-hide-remove {
+    animation: fadeIn .51s ease;
+}
+
+
+/*---------------workspace-----------------*/
+
+.workspace {
+    width: 82%;
+    padding-top: 70px;
+    position: absolute;
+    right: 0;
+    transition: width .25s ease;
+}
+
+.workspace-smallMenu {
+    width: 96%
 }
