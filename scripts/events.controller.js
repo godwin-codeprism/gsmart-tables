@@ -9,4 +9,7 @@ angular.module('qls-admin')
         $scope.addRow = function (i) {
             $scope.events = gsmartTables.add($scope.events, i);
         };
+        $scope.removeRow = function (e, i) {
+            $scope.events = gsmartTables.remove(e, $scope.events, i);
+        };
     }])
