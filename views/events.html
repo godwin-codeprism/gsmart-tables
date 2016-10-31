@@ -11,34 +11,35 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="event in events" class="repeat-item">
-			<td class="text">{{event.training}}</td>
-			<td class="text">{{event.date}}</td>
-			<td class="text">{{event.location}}</td>
-			<td><a ng-href="{{event.link}}" class="link">Click here</a></td>
-			<td>
+			<td class="text" data-type="text">{{event.training}}</td>
+			<td class="text" data-type="text">{{event.date}}</td>
+			<td class="text" data-type="text">{{event.location}}</td>
+			<td data-type="link"><a ng-href="{{event.link}}" class="link">Click here</a></td>
+			<td data-type="actions">
 				<div class="container-fulid">
 					<div class="row">
 						<div class="col-xs-4 text-center">
-							<button class="btn btn-xs btn-block btn-primary" ng-click="addRow($index)">Add</button>
+							<button class="btn btn-xs btn-block btn-primary btn-action" ng-click="addRow($index)">Add</button>
 						</div>
 						<div class="col-xs-4 text-center">
 							<div class="btn-delete">
-								<button class="btn btn-xs btn-block btn-danger" ng-click="removeRow($event, $index)">Delete</button>
+								<button class="btn btn-xs btn-block btn-danger btn-action" ng-click="removeRow($event, $index)">Delete</button>
 							</div>
 							<span class="input-group" style="display:none">
 								<span class="input-group-addon" style="padding:4px;"> Sure? </span>
 								<span class="input-group-btn">
-									<button class="btn btn-danger btn-xs yes" ng-click="removeRow($event, $index)">
+									<button class="btn btn-danger btn-xs btn-action yes" ng-click="removeRow($event, $index)">
 										<i class="fa fa-check-circle"></i>
 										</button>
-									<button class="btn btn-success btn-xs no" ng-click="removeRow($event, $index)">
+									<button class="btn btn-success btn-xs btn-action no" ng-click="removeRow($event, $index)">
 										<i class="fa fa-times-circle"></i>
 									</button>
 								</span>
 							</span>
 						</div>
 						<div class="col-xs-4 text-center">
-							<button class="btn btn-xs btn-block btn-warning">Edit</button>
+							<button class="btn btn-xs btn-block btn-warning btn-action edit" ng-click="editRow($event)">Edit</button>
+							<button class="btn btn-xs btn-block btn-success btn-action save" ng-click="saveRowText($event)" style="display:none">Save</button>
 						</div>
 					</div>
 				</div>

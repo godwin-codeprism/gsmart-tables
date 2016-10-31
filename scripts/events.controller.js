@@ -12,4 +12,10 @@ angular.module('qls-admin')
         $scope.removeRow = function (e, i) {
             $scope.events = gsmartTables.remove(e, $scope.events, i);
         };
+        $scope.editRow = function (e) {
+            gsmartTables.edit(e);
+        }
+        $scope.saveRowText = function(e){
+            gsmartTables.save(e);
+        }
     }])
