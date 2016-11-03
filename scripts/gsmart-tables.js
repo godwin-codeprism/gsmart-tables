@@ -86,6 +86,8 @@ angular.module('qls-admin')
                             data.link[0] = $('#' + popoverId).find('input[type="text"]').val();
                         }
                         $('#' + popoverId).popover('hide');
+                    } else {
+                        data.link[0] = $(element).find('a').attr('href');
                     }
                     $(element).find('.link_btn').remove();
                 }
