@@ -15,7 +15,7 @@ angular.module('qls-admin')
         $scope.editRow = function (e) {
             gsmartTables.edit(e);
         }
-        $scope.saveRowText = function(e){
-            gsmartTables.save(e);
+        $scope.saveRowText = function(e, i){
+            gsmartTables.save(e, i);
         }
     }])

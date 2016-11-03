@@ -51,7 +51,9 @@ angular.module('qls-admin', ['ui.router', 'ngAnimate'])
             })
             .state('dashboard.testimonials', {
                 url: '/testimonials',
-                templateUrl: 'views/testimonials.html'
+                templateUrl: 'views/testimonials.html',
+                controller: 'testimonialsController',
+                controllerAs: 'testimonials'
             })
             .state('dashboard.clients', {
                 url: '/clients',
