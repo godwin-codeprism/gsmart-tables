@@ -61,7 +61,7 @@ angular.module('qls-admin')
             });
         };
         // save function
-        this.save = function (e, i, backEnd) {
+        this.save = function (e, i, backEnd, uploadLocation) {
             var _this = e.currentTarget;
             var _tr = this.parents(_this, 'TR');
             var data = {
